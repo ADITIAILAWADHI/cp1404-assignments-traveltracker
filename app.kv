@@ -1,0 +1,54 @@
+BoxLayout:
+    orientation: 'horizontal'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: 0.4
+        Label:
+            text: 'Sort by:'
+        Spinner:
+            id: sort_selection
+            text: app.current_sort
+            values: app.sort_value
+            on_text: app.change_sort(self.text)
+        Label:
+            text: 'Add New Place...'
+        Label:
+            text: 'Name:'
+        TextInput:
+            id: new_name
+            multiline: False
+            text: ''
+            write_tab: False
+        Label:
+            text: 'Country:'
+        TextInput:
+            id: new_country
+            multiline: False
+            text: ''
+            write_tab: False
+        Label:
+            text: 'Priority:'
+        TextInput:
+            id: new_priority
+            multiline: False
+            text: ''
+            write_tab: False
+        Button:
+            text: 'Add Place'
+            id: add_new_widget_id
+            on_press: app.add_new_widget(new_name.text, new_country.text, new_priority.text)
+        Button:
+            text: 'Clear'
+            id: clear_id
+            on_press: app.clear()
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: app.places_to_visit
+            size_hint_y: 0.1
+        BoxLayout:
+            id: entries_box
+            orientation: 'vertical'
+        Label:
+            text: app.program_messages
+            size_hint_y: 0.1
